@@ -9,10 +9,10 @@ module.exports.run = async (bot, message, args) => {
         .setColor('#FF2D00')
         .setThumbnail('https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80')
         .setImage('https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80')
-        .setFooter('This is a example footer', 'https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80')
+        .setFooter('weeewoooo', 'https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80')
         .addFields(
-            { name: 'Test Number 1', value: 'This is a example value', inline: true},
-            { name: 'Test Number 2', value: 'This is a example value', inline: true}
+            { name: 'Version', value: '1.1.2', inline: true},
+            { name: 'Creator', value: 'Assassin#1234', inline: true}
         )
         .setTimestamp()
 
@@ -22,7 +22,7 @@ module.exports.run = async (bot, message, args) => {
 
 module.exports.config = {
     name: "invite",
-    description: "example of an Embed.",
+    description: "Invite the bot to your server.",
     usage: "?invite",
     accessableby: "Members",
     aliases: []
