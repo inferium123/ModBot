@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const { watch } = require("fs");
 const bot = new Discord.Client();
         bot.on()
-        const client = new Discord.Client();
+const client = new Discord.Client();
         client.on()
 
 module.exports = bot => { 
