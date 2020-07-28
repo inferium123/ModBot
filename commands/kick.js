@@ -26,4 +26,3 @@ module.exports.config = {
     accessableby: "Admins",
     aliases: []
 }
-
