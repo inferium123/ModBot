@@ -39,11 +39,3 @@ bot.on("message", async message => {
     if(commandfile) commandfile.run(bot,message,args)
 
 })
-command(client, 'servers', (message) => {
-    client.guild.cache.forEach((guild) => {
-        message.channel.send(
-            `${guild.name} has ${guild.memberCount} members`
-        )
-    })
-})
-bot.login(process.env.token);
