@@ -1,36 +1,19 @@
-const Discord = require("discord.js")
-const botconfig = require("../botsettings.json");
+//THIS IS THE CODE FOR THE COMMAND ONLY
+ 
+const messageArray = message.content.split(' ');
+const args = messageArray.slice(1);
 
-module.exports.run = async (bot, message, args) => {
-            
-    if (message.deletable) {
-        message.delete();
-    }
+if (!message.member.permissions.has("MANAGE_MESSAGES")) return message.channel.send('Lack of Perms!');
 
-    if (!message.member.hasPermission("MANAGE_MESSAGES")) {
-        return message.reply("Missing Permissions!").then(m => m.delete(5000));
-    }
+let deleteAmount;
 
-    if (isNaN(args[0]) || parseInt(args[0]) <= 0) {
-        return message.reply("This is not a number").then(m => m.delete(5000));
-    }
+if (isNaN(args[0]) || parseInt(args[0]) <= 0) { return message.reply('Please put a number only!') }
 
-    let deleteAmount;
-    if (parseInt(args[0]) > 100) {
-        deleteAmount = 100;
-    } else {
-        deleteAmount = parseInt(args[0]);
-    }
-
-    message.channel.bulkDelete(deleteAmount, true)
-    .catch(err => message.reply(`Something went wrong... ${err}`));
-
+if (parseInt(args[0]) > 100) {
+    return message.reply('You can only delete 100 messages at a time!')
+} else {
+    deleteAmount = parseInt(args[0]);
 }
 
-module.exports.config = {
-    name: "clear",
-    description: "clears message",
-    usage: "+clear",
-    accessableby: "Members",
-    aliases: ['c', 'purge']
-}
+message.channel.bulkDelete(deleteAmount + 1, true);
+message.reply(`**Successfully** Deleted ***${deleteAmount}*** Messages.`)
