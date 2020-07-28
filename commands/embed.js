@@ -23,7 +23,7 @@ module.exports.run = async (bot, message, args) => {
 module.exports.config = {
     name: "invite",
     description: "Invite the bot to your server.",
-    usage: "?invite",
+    usage: "+invite",
     accessableby: "Members",
     aliases: []
 }
