@@ -8,7 +8,7 @@ module.exports.run = async (bot, message, args) => {
 module.exports.config = {
     name: "hello",
     description: "Answers hello, its just a test command.",
-    usage: "+hello",
+    usage: "=hello",
     accessableby: "Members",
     aliases: []
 }
