@@ -6,5 +6,3 @@ module.exports = bot => {
      bot.user.setActivity( `${bot.guilds.cache.size} servers ${bot.users.cache.size} members !`, {type: "WATCHING"});
      
 }
-
-
