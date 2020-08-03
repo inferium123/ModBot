@@ -26,7 +26,7 @@ module.exports.config = {
     description: "shows a random meme from reddit",
     usage: "=meme",
     accessableby: "Members",
-    aliases: []
+    aliases: ['m']
 }
 
 
