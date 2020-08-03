@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 module.exports.run = async (bot, message, args) => {
     const embed = new Discord.MessageEmbed()
         .setTitle('Invite Me! (click on this)')
-        .setURL('https://discord.com/oauth2/authorize?client_id=722782077111631935&scope=bot&permissions=2146958847')
+        .setURL('https://discord.com/oauth2/authorize?client_id=739570051023372570&scope=bot&permissions=2146958847')
         .setAuthor('ModBot')
         .setDescription('This is my first public bot ! Im adding 1 new feature ever day !')
         .setColor('#FF2D00')
