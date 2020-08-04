@@ -60,7 +60,7 @@ const manager = new GiveawaysManager(bot, {
         botsCanWin: false,
         exemptPermissions: [ "MANAGE_MESSAGES", "ADMINISTRATOR" ],
         embedColor: "#FF0000",
-        reaction: "🎉"
+        reaction: "🥨"
     }
 });
 // We now have a giveawaysManager property to access the manager everywhere!
