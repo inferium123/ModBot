@@ -48,7 +48,7 @@ bot.login(process.env.token)
 settings = {
     prefix: "=",
     token: (process.env.token),
-    everyoneMention: False 
+    disableEveryone: true
 };
 
 // Requires Manager from discord-giveaways
