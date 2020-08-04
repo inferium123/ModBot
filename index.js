@@ -50,7 +50,7 @@ settings = {
     token: (process.env.token),
     everyoneMention: False 
 };
- 
+
 // Requires Manager from discord-giveaways
 const { GiveawaysManager } = require("discord-giveaways");
 // Starts updating currents giveaways
