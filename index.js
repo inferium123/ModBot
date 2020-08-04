@@ -41,3 +41,112 @@ bot.on("message", async message => {
 
 })
 bot.login(process.env.token)
+
+
+
+//giveaway
+settings = {
+    prefix: "g!",
+    token: (process.env.token)
+};
+ 
+// Requires Manager from discord-giveaways
+const { GiveawaysManager } = require("discord-giveaways");
+// Starts updating currents giveaways
+const manager = new GiveawaysManager(bot, {
+    storage: "./giveaways.json",
+    updateCountdownEvery: 10000,
+    default: {
+        botsCanWin: false,
+        exemptPermissions: [ "MANAGE_MESSAGES", "ADMINISTRATOR" ],
+        embedColor: "#FF0000",
+        reaction: "🎉"
+    }
+});
+// We now have a giveawaysManager property to access the manager everywhere!
+bot.giveawaysManager = manager;
+  
+bot.login(process.env.token)
+
+bot.on("message", (message) => {
+ 
+    const ms = require("ms"); // npm install ms
+    const args = message.content.slice(settings.prefix.length).trim().split(/ +/g);
+    const command = args.shift().toLowerCase();
+ 
+    if(command === "start-giveaway"){
+        // g!start-giveaway 2d 1 Awesome prize!
+        // will create a giveaway with a duration of two days, with one winner and the prize will be "Awesome prize!"
+ 
+        bot.giveawaysManager.start(message.channel, {
+            time: ms(args[0]),
+            prize: args.slice(2).join(" "),
+            winnerCount: parseInt(args[1])
+        }).then((gData) => {
+            console.log(gData); // {...} (messageid, end date and more)
+        });
+        // And the giveaway has started!
+    }
+});
+
+// The list of all the giveaways
+let allGiveaways = bot.giveawaysManager.giveaways; // [ {Giveaway}, {Giveaway} ]
+ 
+// The list of all the giveaways on the server with ID "1909282092"
+let onServer = bot.giveawaysManager.giveaways.filter((g) => g.guildID === "1909282092");
+
+// The list of the current giveaways (not ended)
+let notEnded = bot.giveawaysManager.giveaways.filter((g) => !g.ended);
+
+bot.on("message", (message) => {
+ 
+    const ms = require("ms"); // npm install ms
+    const args = message.content.slice(settings.prefix.length).trim().split(/ +/g);
+    const command = args.shift().toLowerCase();
+ 
+    if(command === "reroll"){
+        let messageID = args[0];
+        bot.giveawaysManager.reroll(messageID).then(() => {
+            message.channel.send("Success! Giveaway rerolled!");
+        }).catch((err) => {
+            message.channel.send("No giveaway found for "+messageID+", please check and try again");
+        });
+    }
+ 
+});
+
+bot.on("message", (message) => {
+ 
+    const args = message.content.slice(settings.prefix.length).trim().split(/ +/g);
+    const command = args.shift().toLowerCase();
+ 
+    if(command === "edit"){
+        let messageID = args[0];
+        bot.giveawaysManager.edit(messageID, {
+            newWinnerCount: 3,
+            newPrize: "New Prize!",
+            addTime: 5000
+        }).then(() => {
+            message.channel.send("Success! Giveaway will updated in less than "+(manager.updateCountdownEvery/1000)+" seconds.");
+        }).catch((err) => {
+            message.channel.send("No giveaway found for "+messageID+", please check and try again");
+        });
+    }
+ 
+});
+
+bot.on("message", (message) => {
+ 
+    const args = message.content.slice(settings.prefix.length).trim().split(/ +/g);
+    const command = args.shift().toLowerCase();
+ 
+    if(command === "delete"){
+        let messageID = args[0];
+        bot.giveawaysManager.delete(messageID).then(() => {
+            message.channel.send("Success! Giveaway deleted!");
+        }).catch((err) => {
+            message.channel.send("No giveaway found for "+messageID+", please check and try again");
+        });
+    }
+ 
+});
