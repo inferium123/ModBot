@@ -2,13 +2,13 @@ const Discord = require("discord.js")
 const botconfig = require("../botsettings.json");
 
 module.exports.run = async (bot, message, args) => {
-    message.reply ('``is the coolest person alive cuz she helped <@734006373343297557> make me !``')
+    return message.channel.send("is the coolest person alive becuz she helped build me !")
 }
 
 module.exports.config = {
-    name: "=alexainfo",
-    description: "Answers hello, its just a test command.",
-    usage: "=hello",
+    name: "alexainfo",
+    description: "alexainfo",
+    usage: "=alexainfo",
     accessableby: "Members",
-    aliases: []
+    aliases: ['ai']
 }
