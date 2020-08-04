@@ -55,7 +55,7 @@ const { GiveawaysManager } = require("discord-giveaways");
 // Starts updating currents giveaways
 const manager = new GiveawaysManager(bot, {
     storage: "./giveaways.json",
-    updateCountdownEvery: 10,
+    updateCountdownEvery: 100,
     default: {
         botsCanWin: false,
         exemptPermissions: [ "MANAGE_MESSAGES", "ADMINISTRATOR" ],
@@ -127,7 +127,7 @@ bot.on("message", (message) => {
             newPrize: "New Prize!",
             addTime: 5000
         }).then(() => {
-            message.channel.send("Success! Giveaway will updated in less than "+(manager.updateCountdownEvery/10)+" seconds.");
+            message.channel.send("Success! Giveaway will updated in less than "+(manager.updateCountdownEvery/100)+" seconds.");
         }).catch((err) => {
             message.channel.send("No giveaway found for "+messageID+", please check and try again");
         });
