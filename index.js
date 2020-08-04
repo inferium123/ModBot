@@ -160,4 +160,3 @@ bot.on("message", (message) => {
 // }).catch((err) => {
 //     message.channel.send("No giveaway found for "+messageID+", please check and try again");
 // });
-
