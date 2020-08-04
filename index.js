@@ -65,8 +65,6 @@ const manager = new GiveawaysManager(bot, {
 });
 // We now have a giveawaysManager property to access the manager everywhere!
 bot.giveawaysManager = manager;
-  
-bot.login(process.env.token)
 
 bot.on("message", (message) => {
  
@@ -160,3 +158,4 @@ bot.on("message", (message) => {
 //     message.channel.send("No giveaway found for "+messageID+", please check and try again");
 // });
 
+bot.login(process.env.token)
