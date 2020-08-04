@@ -46,7 +46,7 @@ bot.login(process.env.token)
 
 //giveaway
 settings = {
-    prefix: "=!",
+    prefix: "g!",
     token: (process.env.token)
 };
  
@@ -55,12 +55,12 @@ const { GiveawaysManager } = require("discord-giveaways");
 // Starts updating currents giveaways
 const manager = new GiveawaysManager(bot, {
     storage: "./giveaways.json",
-    updateCountdownEvery: 1,
+    updateCountdownEvery: 10000,
     default: {
         botsCanWin: false,
         exemptPermissions: [ "MANAGE_MESSAGES", "ADMINISTRATOR" ],
         embedColor: "#FF0000",
-        reaction: "🥨"
+        reaction: "🎉"
     }
 });
 // We now have a giveawaysManager property to access the manager everywhere!
@@ -74,7 +74,7 @@ bot.on("message", (message) => {
     const args = message.content.slice(settings.prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
  
-    if(command === "giveaway"){
+    if(command === "start-giveaway"){
         // g!start-giveaway 2d 1 Awesome prize!
         // will create a giveaway with a duration of two days, with one winner and the prize will be "Awesome prize!"
  
@@ -127,7 +127,7 @@ bot.on("message", (message) => {
             newPrize: "New Prize!",
             addTime: 5000
         }).then(() => {
-            message.channel.send("Success! Giveaway will updated in less than "+(manager.updateCountdownEvery/1)+" seconds.");
+            message.channel.send("Success! Giveaway will updated in less than "+(manager.updateCountdownEvery/1000)+" seconds.");
         }).catch((err) => {
             message.channel.send("No giveaway found for "+messageID+", please check and try again");
         });
@@ -149,4 +149,13 @@ bot.on("message", (message) => {
         });
     }
  
+});
+
+bot.giveawaysManager.reroll(messageID, {
+    messages: {
+        congrat: ":tada: New winner(s) : {winners}! Congratulations!",
+        error: "No valid participations, no winners can be chosen!"
+    }
+}).catch((err) => {
+    message.channel.send("No giveaway found for "+messageID+", please check and try again");
 });
