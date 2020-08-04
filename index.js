@@ -46,7 +46,7 @@ bot.login(process.env.token)
 
 //giveaway
 settings = {
-    prefix: "g!",
+    prefix: "=",
     token: (process.env.token)
 };
  
