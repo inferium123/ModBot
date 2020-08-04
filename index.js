@@ -47,9 +47,9 @@ bot.login(process.env.token)
 //giveaway
 settings = {
     prefix: "=",
-    token: (process.env.token),
+    token: (process.env.token)
 };
-
+ 
 // Requires Manager from discord-giveaways
 const { GiveawaysManager } = require("discord-giveaways");
 // Starts updating currents giveaways
@@ -159,3 +159,4 @@ bot.on("message", (message) => {
 // }).catch((err) => {
 //     message.channel.send("No giveaway found for "+messageID+", please check and try again");
 // });
+
