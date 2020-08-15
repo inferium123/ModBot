@@ -1,16 +1,12 @@
 const Discord = require('discord.js');
 
 module.exports.run = async (bot, message, args) => {
-    let channel = message.mentions.channels.first()
-
-    if(!channel) return message.reply("**Please Mention the channel.**")
-
     const verify = new Discord.MessageEmbed()
         .setColor("GREEN")
         .setDescription([
             "React to this message to get full access to the server :tada:"
         ])
-    let msgEmbed = await channel.send(verify)
+    let msgEmbed = await message.channel.send(verify)
     msgEmbed.react('✅')
 
     const filter = (reaction, user) => {
@@ -26,10 +22,10 @@ module.exports.run = async (bot, message, args) => {
             const reaction = collected.first();
 
             if (reaction.emoji.name === '✅') {
-                const hotdogembed = new Discord.MessageEmbed()
+                const embed = new Discord.MessageEmbed()
                     .setTitle("You Gay")
                     .setColor("RANDOM")
-                message.channel.send(hotdogembed)
+                message.channel.send(embed)
                 console.log("YOU GAY")
             }
         })
