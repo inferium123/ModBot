@@ -23,7 +23,7 @@ module.exports.run = async (bot, message, args) => {
         .then(collected => {
             const reaction = collected.first();
 
-            if (reaction.emoji.name === ':VoteYes:722455899192557629') {
+            if (reaction.emoji.name === ':tada:') {
                 const hotdogembed = new Discord.MessageEmbed()
                     .setTitle("You Gay")
                     .setColor("RANDOM")
