@@ -148,21 +148,5 @@ bot.on("message", (message) => {
     }
  
 });
-bot.on("message", (message) => {
- 
-    const ms = require("ms"); // npm install ms
-    const args = message.content.slice(settings.prefix.length).trim().split(/ +/g);
-    const command = args.shift().toLowerCase();
- 
-    if(command === "reroll"){
-        let messageID = args[0];
-        bot.giveawaysManager.reroll(messageID).then(() => {
-            message.channel.send("Success! Giveaway rerolled!");
-        }).catch((err) => {
-            message.channel.send("No giveaway found for "+messageID+", please check and try again");
-        });
-    }
- 
-});
 
 bot.login(process.env.token)
