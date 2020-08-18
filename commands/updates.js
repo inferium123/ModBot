@@ -6,9 +6,9 @@ module.exports.run = async (bot, message, args) => {
 }
 
 module.exports.config = {
-    name: "alexainfo",
-    description: "alexainfo",
-    usage: "=alexainfo",
+    name: "updates",
+    description: "check new updates",
+    usage: "=updates",
     accessableby: "Members",
-    aliases: ['ai']
+    aliases: ['update','up']
 }
