@@ -148,7 +148,7 @@ bot.on("message", (message) => {
     }
  
 });
-let messageID = args[0];
+
 bot.giveawaysManager.reroll(messageID, {
     messages: {
         congrat: ":tada: New winner(s) : {winners}! Congratulations!",
