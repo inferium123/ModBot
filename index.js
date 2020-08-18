@@ -149,13 +149,13 @@ bot.on("message", (message) => {
  
 });
 
-// bot.giveawaysManager.reroll(messageID, {
-//     messages: {
-//         congrat: ":tada: New winner(s) : {winners}! Congratulations!",
-//         error: "No valid participations, no winners can be chosen!"
-//     }
-// }).catch((err) => {
-//     message.channel.send("No giveaway found for "+messageID+", please check and try again");
-// });
+bot.giveawaysManager.reroll(messageID, {
+    messages: {
+        congrat: ":tada: New winner(s) : {winners}! Congratulations!",
+        error: "No valid participations, no winners can be chosen!"
+    }
+}).catch((err) => {
+    message.channel.send("No giveaway found for "+messageID+", please check and try again");
+});
 
 bot.login(process.env.token)
